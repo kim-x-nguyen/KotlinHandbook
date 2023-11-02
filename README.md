@@ -9,7 +9,6 @@ Welcome to the Kotlin Handbook! This handbook serves as a comprehensive guide to
 - [Kotlin Handbook By Kim Nguyen](#kotlin-handbook-by-kim-nguyen)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
-  - [Getting Started](#getting-started)
   - [Kotlin Fundamentals](#kotlin-fundamentals)
   - [Contributing](#contributing)
   - [License](#license)
@@ -18,15 +17,9 @@ Welcome to the Kotlin Handbook! This handbook serves as a comprehensive guide to
 
 Kotlin is a modern, concise, and versatile programming language that runs on the Java Virtual Machine (JVM). It is known for its simplicity, expressive syntax, and strong interoperability with existing Java code. This handbook aims to provide you with a solid foundation in Kotlin, whether you're a beginner or an experienced developer.
 
-## Getting Started
-
-To get started with Kotlin, follow these steps:
-
-1. [Installation](docs/installation.md): Learn how to install Kotlin on your system.
-2. [Hello World](docs/hello-world.md): Create your first Kotlin program.
-3. [IDE Setup](docs/ide-setup.md): Set up popular Integrated Development Environments (IDEs) for Kotlin development.
-
 ## Kotlin Fundamentals
+
+Learn the basics of Kotlin, including variables, constants, data types, type inference, and type conversion. [Read more →](kotlinFundamentals/kotlinFundamentals.md)
 
 ## Contributing
 
