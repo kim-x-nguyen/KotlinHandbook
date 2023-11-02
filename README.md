@@ -19,7 +19,7 @@ Kotlin is a modern, concise, and versatile programming language that runs on the
 
 ## Kotlin Fundamentals
 
-Learn the basics of Kotlin, including variables, constants, data types, type inference, and type conversion. [Read more →](kotlinFundamentals/kotlinFundamentals.md)
+Learn the basics of Kotlin, including variables, constants, data types, type inference, and type conversion. [Read more →](docs/kotlinFundamentals/kotlinFundamentals.md)
 
 ## Contributing
 
