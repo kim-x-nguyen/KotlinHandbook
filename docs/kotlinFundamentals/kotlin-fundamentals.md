@@ -150,12 +150,194 @@ val languageName: String? = null
 
 Kotlin has a variety of operators that you can use to perform operations on variables and values. Here are some of the most common ones:
 
-- Arithmetic Operators: +, -, *, /, %
-- Assignment Operators: =, +=, -=, *=, /=, %=
-- Comparison Operators: ==, !=, >, <, >=, <=
-- Increment and Decrement Operators: ++, --
-- Logical Operators: &&, ||, !
-- Bitwise Operators: &, |, ^, <<, >>, >>>
+1. Arithmetic Operators: +, -, *, /, %
+
+- Arithmetic operators are used to perform basic arithmetic operations like addition, subtraction, multiplication, division, and modulus (remainder). For example:
+
+    ```kotlin
+    val sum = 1 + 2 // 3
+    val difference = 5 - 3 // 2
+    val product = 4 * 2 // 8
+    val quotient = 10 / 2 // 5
+    val remainder = 10 % 3 // 1
+    ```
+
+2. Assignment Operators: =, +=, -=, *=, /=, %=
+
+- Assigment Operators are used to assign values to variables. For example:
+
+    ```kotlin
+    var num = 1
+    num += 2 // num = num + 2
+    num -= 1 // num = num - 1
+    num *= 3 // num = num * 3
+    num /= 2 // num = num / 2
+    num %= 2 // num = num % 2
+    ```
+
+3. Comparison Operators: ==, !=, >, <, >=, <=
+
+- Comparison operators are used to compare two values and return a Boolean value. For example:
+
+    ```kotlin
+    val isEqual = 1 == 1 // true
+    val isNotEqual = 1 != 1 // false
+    val isGreater = 2 > 1 // true
+    val isLess = 1 < 2 // true
+    val isGreaterOrEqual = 2 >= 1 // true
+    val isLessOrEqual = 1 <= 2 // true
+    ```
+
+4. Increment and Decrement Operators: ++, --
+
+- Increment and decrement operators are used to increase or decrease the value of a variable by 1. For example:
+
+    ```kotlin
+    var num = 1
+    num++ // num = num + 1
+    num-- // num = num - 1
+    ```
+
+- Note that the increment and decrement operators can be used as prefix or postfix operators. For example:
+
+    ```kotlin
+    var num = 1
+    ++num // increment before use
+    --num // decrement before use
+    num++ // increment after use
+    num-- // decrement after use
+    ```
+
+5. Logical Operators: &&, ||, !
+
+- Logical operators are used to combine multiple Boolean values and return a Boolean value. For example:
+
+    ```kotlin
+    val isTrue = true
+    val isFalse = false
+    val and = isTrue && isFalse // false
+    val or = isTrue || isFalse // true
+    val not = !isTrue // false
+    ```
+
+- Note that the logical operators can be used as infix or prefix operators. For example:
+
+    ```kotlin
+    val isTrue = true
+    val isFalse = false
+    val and = isTrue and isFalse // false (infix)
+    val or = isTrue or isFalse // true (infix)
+    val not = isTrue.not() // false (prefix)
+    ```
+
+- Infix operators are binary operators that take exactly one argument on the left and one on the right, such as +, -, *, /, ==, etc. In Kotlin, you can define custom infix functions by using the infix keyword. The main benefit of infix operators is that they allow you to call functions in a more natural, infix-like manner, without using parentheses or dots. For example:
+
+    ```kotlin
+    infix fun Int.add(num: Int): Int {
+        return this + num
+    }
+
+    val sum = 1 add 2 // 3
+    ```
+
+- Prefix operators are unary operators that operate on a single operand, such as -, !, ++, --, etc. In Kotlin, you can define custom prefix functions by using the operator modifier. Example of a custom prefix operator function:
+
+    ```kotlin
+    operator fun Int.unaryMinus(): Int {
+        return -this
+    }
+
+    // Usage of the prefix operator function:
+    val negativeValue = -5  // Equivalent to unaryMinus(5)
+    ```
+
+6. Bitwise Operators: &, |, ^, <<, >>, >>>
+
+- Bitwise operators are used to perform bitwise operations on the binary representation of integer values. For example:
+
+    ```kotlin
+    val num1 = 0b00000001 // 1
+    val num2 = 0b00000010 // 2
+    val and = num1 and num2 // 0b00000000 (0)
+    val or = num1 or num2 // 0b00000011 (3)
+    val xor = num1 xor num2 // 0b00000011 (3)
+    val shiftLeft = num1 shl 1 // 0b00000010 (2)
+    val shiftRight = num1 shr 1 // 0b00000000 (0)
+    val shiftRightUnsigned = num1 ushr 1 // 0b00000000 (0)
+    ```
+
+7. Range Operators: .., downTo, until, step
+  
+- Range operators are used to create ranges of values. For example:
+
+    ```kotlin
+    val range = 1..10 // 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    val range2 = 10 downTo 1 // 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
+    val range3 = 1 until 10 // 1, 2, 3, 4, 5, 6, 7, 8, 9
+    val range4 = 1..10 step 2 // 1, 3, 5, 7, 9
+    ```
+
+8. Elvis Operator: ?:
+  
+- The Elvis operator is used to provide a default value when a nullable type is null. For example:
+
+    ```kotlin
+    val nullableInt: Int? = null
+    val result = nullableInt ?: 0 // 0
+    ```
+
+9. Safe Call Operator: ?.
+
+- The safe call operator is used to safely call a method or access a property of a nullable type. For example:
+
+    ```kotlin
+    val nullableInt: Int? = null
+    val length = nullableInt?.toString()?.length // null
+    ```
+
+10. Not-Null Assertion Operator: !!
+
+- The not-null assertion operator is used to tell the compiler that a nullable type is not null, and throw an exception if it is null. For example:
+
+    ```kotlin
+    val nullableInt: Int? = null
+    val result = nullableInt!! // Throws an exception
+    ```
+
+11. Spread Operator: *
+
+- The spread operator is used to pass an array as a vararg parameter. For example:
+
+    ```kotlin
+    val array = arrayOf(1, 2, 3)
+    val list = listOf(*array) // [1, 2, 3]
+    ```
+
+12. Index Access Operator: []
+
+- The index access operator is used to access an element of an array or a list. For example:
+
+    ```kotlin
+    val array = arrayOf(1, 2, 3)
+    val list = listOf(1, 2, 3)
+    val firstElement = array[0] // 1
+    val secondElement = list[1] // 2
+    ```
+
+13. Invoke Operator: ()
+
+- The invoke operator is used to call an object as if it were a function. For example:
+
+    ```kotlin
+    class MyFunction {
+        operator fun invoke() {
+            println("Hello, world!")
+        }
+    }
+
+    val myFunction = MyFunction()
+    myFunction() // Prints "Hello, world!"
+    ```
 
 ## Loops and Branching in Kotlin
 
