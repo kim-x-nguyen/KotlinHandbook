@@ -230,10 +230,13 @@ Kotlin has a variety of operators that you can use to perform operations on vari
     val not = isTrue.not() // false (prefix)
     ```
 
-- Infix operators are binary operators that take exactly one argument on the left and one on the right, such as +, -, *, /, ==, etc. In Kotlin, you can define custom infix functions by using the infix keyword. The main benefit of infix operators is that they allow you to call functions in a more natural, infix-like manner, without using parentheses or dots. For example:
+- Infix operators are binary operators that take exactly one argument on the left and one on the right, such as +, -, *, /, ==, etc. In Kotlin, you can define custom infix functions by using the infix keyword. The main benefit of infix operators is that they allow you to call functions in a more natural, infix-like manner, without using parentheses or dots (https://kotlinlang.org/docs/functions.html#infix-notation). For example:
 
     ```kotlin
-    infix fun Int.add(num: Int): Int {
+    //This must have only one parameter,
+    //must be member function or extension function, 
+    //must not accept variable number of arguments and must not have default parameter value.
+    infix fun Int.add(num: Int): Int { 
         return this + num
     }
 
