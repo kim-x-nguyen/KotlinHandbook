@@ -190,3 +190,180 @@ fun main() {
 
 The `open` keyword is used to allow the class to be inherited. By default, classes in Kotlin are final and cannot be inherited.
 
+
+### 7. Overriding
+
+Overriding is a mechanism that allows you to change the behavior of a superclass in a subclass. In Kotlin, you can use the `override` keyword to override a property or method.
+
+```kotlin
+open class Person {
+    // properties
+    open var name: String = ""
+    open var age: Int = 0
+
+    // methods
+    open fun speak() {
+        println("Hello!")
+    }
+}
+
+class Student : Person() {
+    // properties
+    override var name: String = ""
+    override var age: Int = 0
+
+    // methods
+    override fun speak() {
+        println("Hello, I'm a student!")
+    }
+}
+
+fun main() {
+    val student = Student()
+    student.speak() // Hello, I'm a student!
+}
+```
+
+The `open` keyword is used to allow the property or method to be overridden. By default, properties and methods in Kotlin are final and cannot be overridden.
+
+
+### 8. Abstract Classes
+
+Abstract classes are classes that cannot be instantiated. They are used to define the structure of a class. Abstract classes are declared using the `abstract` keyword.
+
+```kotlin
+abstract class Person {
+    // properties
+    var name: String = ""
+    var age: Int = 0
+
+    // methods
+    abstract fun speak()
+}
+```
+
+Note that abstract classes can contain both abstract and non-abstract properties and methods. However, abstract properties and methods cannot have a body.
+
+```kotlin
+abstract class Person {
+    // properties
+    var name: String = ""
+    var age: Int = 0
+
+    // methods
+    abstract fun speak() // abstract method
+    fun greet() { // non-abstract method
+        println("Hello!")
+    }
+}
+```
+
+### 9. Abstract Properties
+
+Abstract properties are properties that do not have a value. They are used to define the structure of a class. Abstract properties are declared using the `abstract` keyword.
+
+```kotlin
+abstract class Person {
+    // properties
+    abstract var name: String
+    abstract var age: Int
+
+    // methods
+    abstract fun speak()
+}
+
+class Student : Person() {
+    // properties
+    override var name: String = ""
+    override var age: Int = 0
+
+    // methods
+    override fun speak() {
+        println("Hello, I'm a student!")
+    }
+}
+```
+
+### 9. Interfaces
+
+Interfaces are similar to abstract classes. They are used to define the structure of a class. However, unlike abstract classes, interfaces cannot store state. Interfaces are declared using the `interface` keyword.
+
+```kotlin
+interface MyInterface {
+    fun bar()
+    fun foo() {
+      // optional body
+    }
+}
+```
+
+### 10. Implementing Interfaces
+
+Interfaces are implemented using the `:` symbol. A class can implement multiple interfaces.
+
+```kotlin
+interface MyInterface {
+    fun bar()
+    fun foo() {
+      // optional body
+    }
+}
+
+class MyClass : MyInterface {
+    override fun bar() {
+        // body
+    }
+}
+```
+
+### 11. Properties in Interfaces
+
+You can declare properties in interfaces. However, unlike abstract classes, properties in interfaces cannot have a backing field. They must be abstract or provide accessor implementations.
+
+```kotlin
+interface MyInterface {
+    val prop: Int // abstract
+    val propertyWithImplementation: String
+        get() = "foo" // with implementation
+}
+
+class MyClass : MyInterface {
+    override val prop: Int = 29
+}
+
+fun main() {
+    val myClass = MyClass()
+    println(myClass.prop) // 29
+    println(myClass.propertyWithImplementation) // foo
+}
+```
+
+### 12. Interfaces Inheritance
+
+Interfaces can inherit from other interfaces. A class that implements an interface that inherits from another interface must provide implementations for all the methods of the interface hierarchy.
+
+```kotlin
+interface Named {
+    val name: String
+}
+
+interface Person : Named {
+    val firstName: String
+    val lastName: String
+
+    override val name: String
+        get() = "$firstName $lastName"
+}
+
+data class Employee(
+    // implementing 'name' is not required
+    override val firstName: String,
+    override val lastName: String,
+    val position: String
+) : Person
+
+fun main() {
+    val employee = Employee("John", "Doe", "Manager")
+    println(employee.name) // John Doe
+}
+```
