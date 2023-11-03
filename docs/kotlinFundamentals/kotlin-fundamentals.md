@@ -230,7 +230,7 @@ Kotlin has a variety of operators that you can use to perform operations on vari
     val not = isTrue.not() // false (prefix)
     ```
 
-- Infix operators are binary operators that take exactly one argument on the left and one on the right, such as +, -, *, /, ==, etc. In Kotlin, you can define custom infix functions by using the infix keyword. The main benefit of infix operators is that they allow you to call functions in a more natural, infix-like manner, without using parentheses or dots (https://kotlinlang.org/docs/functions.html#infix-notation). For example:
+- Infix operators are binary operators that take exactly one argument on the left and one on the right, such as +, -, *, /, ==, etc. In Kotlin, you can define custom infix functions by using the infix keyword. The main benefit of infix operators is that they allow you to call functions in a more natural, infix-like manner, without using parentheses or dots (<https://kotlinlang.org/docs/functions.html#infix-notation>). For example:
 
     ```kotlin
     //This must have only one parameter,
@@ -595,4 +595,376 @@ val sum = calculate(1, 2) { a, b -> a + b }
 val substraction = calculate(1, 2) { a, b -> a - b }
 val multiplication = calculate(1, 2) { a, b -> a * b }
 val division = calculate(1, 2) { a, b -> a / b }
+```
+
+## Collections in Kotlin
+
+A collection usually contains a number of objects of the same type (and its subtypes). Objects in a collection are called elements or items. For example, all the students in a department form a collection that can be used to calculate their average age. The elements of a collection can be accessed in a number of ways, including by index, by key, or by using an iterator. Collections can be mutable or immutable. Mutable collections can be modified after they are created, while immutable collections cannot. Kotlin provides a number of collection types that can be used to store collections of objects. These include lists, sets, maps, and arrays.
+
+### Lists
+
+A list is an ordered collection of elements. The elements of a list can be accessed by their index. Lists can be mutable or immutable. Mutable lists can be modified after they are created, while immutable lists cannot. Kotlin provides two types of lists: MutableList and List. MutableList is a mutable list, while List is an immutable list. For example:
+
+```kotlin
+val mutableList: MutableList<Int> = mutableListOf(1, 2, 3)
+
+mutableList.add(4) // [1, 2, 3, 4]
+mutableList.removeAt(0) // [2, 3, 4]
+
+val immutableList: List<Int> = listOf(1, 2, 3)
+
+immutableList.add(4) // Error: add is not defined for List
+immutableList.removeAt(0) // Error: removeAt is not defined for List
+```
+
+#### List Operations
+
+- Get: You can use the get() method to get an element at a specific index. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3)
+    val firstElement = list.get(0) // 1
+    val secondElement = list.get(1) // 2
+    val thirdElement = list.get(2) // 3
+    ```
+
+- Set: You can use the set() method to set an element at a specific index. For example:
+
+    ```kotlin
+    val list = mutableListOf(1, 2, 3)
+    list.set(0, 4) // [4, 2, 3]
+    list.set(1, 5) // [4, 5, 3]
+    list.set(2, 6) // [4, 5, 6]
+    ```
+
+- Add: You can use the add() method to add an element to the end of the list. For example:
+
+    ```kotlin
+    val list = mutableListOf(1, 2, 3)
+    list.add(4) // [1, 2, 3, 4]
+    list.add(5) // [1, 2, 3, 4, 5]
+    list.add(6) // [1, 2, 3, 4, 5, 6]
+    ```
+
+- Add At Index: You can use the add() method to add an element at a specific index. For example:
+
+    ```kotlin
+    val list = mutableListOf(1, 2, 3)
+    list.add(0, 4) // [4, 1, 2, 3]
+    list.add(1, 5) // [4, 5, 1, 2, 3]
+    list.add(2, 6) // [4, 5, 6, 1, 2, 3]
+    ```
+
+- Remove: You can use the remove() method to remove an element from the list. For example:
+
+    ```kotlin
+    val list = mutableListOf(1, 2, 3)
+    list.remove(1) // [2, 3]
+    list.remove(2) // [3]
+    list.remove(3) // []
+    ```
+
+- Remove At Index: You can use the removeAt() method to remove an element at a specific index. For example:
+
+    ```kotlin
+    val list = mutableListOf(1, 2, 3)
+
+    list.removeAt(0) // [2, 3]
+    list.removeAt(0) // [3]
+    list.removeAt(0) // []
+    ```
+
+- Remove All: You can use the removeAll() method to remove all elements from the list. For example:
+
+    ```kotlin
+    val list = mutableListOf(1, 2, 3)
+    list.removeAll() // []
+    ```
+
+- Remove All Elements: You can use the removeAllElements() method to remove all elements from the list. For example:
+
+    ```kotlin
+    val list = mutableListOf(1, 2, 3)
+    list.removeAllElements() // []
+    ```
+
+- Index Of: You can use the indexOf() method to get the index of an element in the list. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3)
+    val index = list.indexOf(2) // 1
+    ```
+
+- Last Index Of: You can use the lastIndexOf() method to get the last index of an element in the list. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3, 2)
+    val index = list.lastIndexOf(2) // 3
+    ```
+
+- Size: You can use the size property to get the number of elements in the list. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3)
+    val size = list.size // 3
+    ```
+
+- Indexing: You can use the indexing operator [] to get an element at a specific index. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3)
+    val firstElement = list[0] // 1
+    val secondElement = list[1] // 2
+    val thirdElement = list[2] // 3
+    ```
+
+- Iteration: You can use the forEach() method to iterate over the elements of the list. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3)
+    list.forEach { println(it) }
+    ```
+
+- Iteration With Index: You can use the forEachIndexed() method to iterate over the elements of the list with their indices. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3)
+    list.forEachIndexed { index, element -> println("$index: $element") } // 0: 1, 1: 2, 2: 3
+    ```
+
+- Map: You can use the map() method to transform the elements of the list. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3)
+    val newList = list.map { it * 2 } // [2, 4, 6]
+    ```
+
+- Filter: You can use the filter() method to filter the elements of the list. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3)
+    val newList = list.filter { it > 1 } // [2, 3]
+    ```
+
+- Fold: You can use the fold() method to combine the elements of the list into a single value. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3)
+    val sum = list.fold(0) { acc, element -> acc + element } // 6
+    ```
+
+- Fold Right: You can use the foldRight() method to combine the elements of the list into a single value, starting from the right. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3)
+    val sum = list.foldRight(0) { acc, element -> acc + element } // 6
+    ```
+
+- Reduce: You can use the reduce() method to combine the elements of the list into a single value. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3)
+    val sum = list.reduce { acc, element -> acc + element } // 6
+    ```
+
+- Reduce Right: You can use the reduceRight() method to combine the elements of the list into a single value, starting from the right. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3)
+    val sum = list.reduceRight { acc, element -> acc + element } // 6
+    ```
+
+- Sort: You can use the sort() method to sort the elements of the list. For example:
+
+    ```kotlin
+    val list = mutableListOf(3, 2, 1)
+    list.sort() // [1, 2, 3]
+    ```
+
+- Sort With: You can use the sortWith() method to sort the elements of the list using a custom comparator. For example:
+
+    ```kotlin
+    val people = mutableListOf(
+    Person("Ragnar", "Lodbrok"),
+    Person("Bjorn", "Ironside"),
+    Person("Sweyn", "Forkbeard"),)
+
+    people.sortWith(compareBy { it.firstName }) // [Bjorn Ironside, Ragnar Lodbrok, Sweyn Forkbeard]
+    ```
+
+- Sort By: You can use the sortBy() method to sort the elements of the list using a custom selector. For example:
+
+    ```kotlin
+    val people = mutableListOf(
+    Person("Ragnar", "Lodbrok"),
+    Person("Bjorn", "Ironside"),
+    Person("Sweyn", "Forkbeard"),)
+
+    people.sortBy { it.firstName } // [Bjorn Ironside, Ragnar Lodbrok, Sweyn Forkbeard]
+    ```
+
+- Sort By Descending: You can use the sortByDescending() method to sort the elements of the list using a custom selector in descending order. For example:
+
+    ```kotlin
+    val people = mutableListOf(
+    Person("Ragnar", "Lodbrok"),
+    Person("Bjorn", "Ironside"),
+    Person("Sweyn", "Forkbeard"),)
+
+    people.sortByDescending { it.firstName } // [Sweyn Forkbeard, Ragnar Lodbrok, Bjorn Ironside]
+    ```
+
+- Sort By With: You can use the sortByWith() method to sort the elements of the list using a custom selector and a custom comparator. For example:
+
+    ```kotlin
+    val people = mutableListOf(
+    Person("Ragnar", "Lodbrok"),
+    Person("Bjorn", "Ironside"),
+    Person("Sweyn", "Forkbeard"),)
+
+    people.sortByWith(compareBy { it.firstName }) // [Bjorn Ironside, Ragnar Lodbrok, Sweyn Forkbeard]
+    ```
+
+- Sort By Descending With: You can use the sortByDescendingWith() method to sort the elements of the list using a custom selector and a custom comparator in descending order. For example:
+
+    ```kotlin
+    val people = mutableListOf(
+    Person("Ragnar", "Lodbrok"),
+    Person("Bjorn", "Ironside"),
+    Person("Sweyn", "Forkbeard"),)
+
+    people.sortByDescendingWith(compareBy { it.firstName }) // [Sweyn Forkbeard, Ragnar Lodbrok, Bjorn Ironside]
+    ```
+
+- Group By: You can use the groupBy() method to group the elements of the list by a key. For example:
+
+    ```kotlin
+    val numbers = listOf("one", "two", "three", "four", "five")
+
+    val groupedNumbers = numbers.groupBy { it.first().toUpperCase() } // {O=[one], T=[two, three], F=[four, five]}
+    
+    val groupedNumbers2 = numbers.groupBy(keySelector = { it.first() }, valueTransform = { it.toUpperCase() }) // {o=[ONE], t=[TWO, THREE], f=[FOUR, FIVE]}
+    ```
+
+- Slice: You can use the slice() method to get a list of elements at specific indices. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3, 4, 5)
+    val newList = list.slice(listOf(0, 2, 4)) // [1, 3, 5]
+    ```
+
+- Chunked: You can use the chunked() method to split the list into chunks of a specific size. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3, 4, 5)
+    val newList = list.chunked(2) // [[1, 2], [3, 4], [5]]
+    ```
+
+- Chunked Transform: You can use the chunked() method to split the list into chunks of a specific size and transform each chunk. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3, 4, 5)
+    val newList = list.chunked(2) { it.sum() } // [3, 7, 5]
+    ```
+
+- Windowed: You can use the windowed() method to get a sliding window of elements of a specific size. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3, 4, 5)
+    val newList = list.windowed(2) // [[1, 2], [2, 3], [3, 4], [4, 5]]
+    ```
+
+- Windowed Partial: You can use the windowed() method to get a sliding window of elements of a specific size, with partial windows. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3, 4, 5)
+    val newList = list.windowed(2, partialWindows = true) // [[1, 2], [2, 3], [3, 4], [4, 5], [5]]
+    ```
+
+- Take: You can use the take() method to get a list of the first n elements of the list. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3, 4, 5)
+    val newList = list.take(3) // [1, 2, 3]
+    ```
+
+- Take Last: You can use the takeLast() method to get a list of the last n elements of the list. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3, 4, 5)
+    val newList = list.takeLast(3) // [3, 4, 5]
+    ```
+
+- Take While: You can use the takeWhile() method to get a list of the first elements of the list that match a predicate. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3, 4, 5)
+    val newList = list.takeWhile { it < 3 } // [1, 2]
+    ```
+
+- Drop: You can use the drop() method to get a list of the elements of the list except the first n elements. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3, 4, 5)
+    val newList = list.drop(3) // [4, 5]
+    ```
+
+- Drop Last: You can use the dropLast() method to get a list of the elements of the list except the last n elements. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3, 4, 5)
+    val newList = list.dropLast(3) // [1, 2]
+    ```
+
+- Drop While: You can use the dropWhile() method to get a list of the elements of the list except the first elements that match a predicate. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3, 4, 5)
+    val newList = list.dropWhile { it < 3 } // [3, 4, 5]
+    ```
+
+- Min or Null: You can use the minOrNull() method to get the smallest element of the list or null if the list is empty. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3)
+    val min = list.minOrNull() // 1
+    ```
+
+- Max or Null: You can use the maxOrNull() method to get the largest element of the list or null if the list is empty. For example:
+
+    ```kotlin
+    val list = listOf(1, 2, 3)
+    val max = list.maxOrNull() // 3
+    ```
+
+### Sets
+
+A set is an unordered collection of elements. The elements of a set can be accessed by their value. Sets can be mutable or immutable. Mutable sets can be modified after they are created, while immutable sets cannot. Kotlin provides two types of sets: MutableSet and Set. MutableSet is a mutable set, while Set is an immutable set. For example:
+
+```kotlin
+val mutableSet: MutableSet<Int> = mutableSetOf(1, 2, 3)
+
+mutableSet.add(4) // [1, 2, 3, 4]
+mutableSet.remove(1) // [2, 3, 4]
+
+val immutableSet: Set<Int> = setOf(1, 2, 3)
+
+immutableSet.add(4) // Error: add is not defined for Set
+immutableSet.remove(1) // Error: remove is not defined for Set
+```
+
+### Maps
+
+A map is a collection of key-value pairs. The keys of a map can be accessed by their value. Maps can be mutable or immutable. Mutable maps can be modified after they are created, while immutable maps cannot. Kotlin provides two types of maps: MutableMap and Map. MutableMap is a mutable map, while Map is an immutable map. For example:
+
+```kotlin
+val mutableMap: MutableMap<String, Int> = mutableMapOf("one" to 1, "two" to 2, "three" to 3)
+
+mutableMap.put("four", 4) // {one=1, two=2, three=3, four=4}
+mutableMap.remove("one") // {two=2, three=3, four=4}
+
+val immutableMap: Map<String, Int> = mapOf("one" to 1, "two" to 2, "three" to 3)
+
+immutableMap.put("four", 4) // Error: put is not defined for Map
+immutableMap.remove("one") // Error: remove is not defined for Map
 ```
